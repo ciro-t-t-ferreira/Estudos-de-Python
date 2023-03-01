@@ -1,9 +1,19 @@
+#FALTA TRUNCAR o valor final da conversão pra ficar no formato ((R)?$)[0-9]{1-},[0-9]{2}
 import re
 
 class ExtratorURL:
     def __init__(self, url):
         self.url = self.sanitiza_url(url)
         self.valida_url()
+
+    def __len__(self):
+        return len(url)
+
+    def __str__(self):
+        return "URL:" + url + "\n" + "Parâmetros:" + self.get_url_parametros() + "\n" + "Base:" + self.get_url_base()
+
+    def __eq__(self, other):
+        return self.url == other.url
 
     def sanitiza_url(self, url):
         return url.strip()
@@ -40,4 +50,15 @@ class ExtratorURL:
 url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
 extrator_url = ExtratorURL(url)
 valor_quantidade = extrator_url.get_valor_parametro("quantidade")
-print(valor_quantidade)
+
+valor_dolar = 5.50
+moeda_or = extrator_url.get_valor_parametro("moedaOrigem")
+moeda_des = extrator_url.get_valor_parametro("moedaDestino")
+quantidade = extrator_url.get_valor_parametro("quantidade")
+
+if moeda_or == "dolar":
+    valor_final = float(quantidade) * valor_dolar
+    print(f"R${valor_final}")
+else:
+    valor_final = float(quantidade) / valor_dolar
+    print(f"${valor_final}")
