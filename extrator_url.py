@@ -1,4 +1,3 @@
-#FALTA TRUNCAR o valor final da conversão pra ficar no formato ((R)?$)[0-9]{1-},[0-9]{2}
 import re
 
 class ExtratorURL:
@@ -58,7 +57,7 @@ quantidade = extrator_url.get_valor_parametro("quantidade")
 
 if moeda_or == "dolar":
     valor_final = float(quantidade) * valor_dolar
-    print(f"R${valor_final}")
+    print("R${:.2f}".format(valor_final))
 else:
     valor_final = float(quantidade) / valor_dolar
-    print(f"${valor_final}")
+    print("${:.2f}".format(valor_final))
