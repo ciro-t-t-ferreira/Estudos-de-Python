@@ -1,3 +1,15 @@
+"""
+Esse é um exemplo de projeto FACTOR:
+É importante perceber que os métodos das subclasses da classe factory possuem os métodos com os nomes
+iguais! Dessa forma, podemos usar a factory sem se preocupar em qual classe foi instanciada.
+Ver mais nos links:
+
+https://pt.wikipedia.org/wiki/Factory_Method
+https://www.thiengo.com.br/padrao-de-projeto-factory-method
+https://sourcemaking.com/design_patterns/factory_method
+https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Factory.html
+
+"""
 from validate_docbr import CPF
 from validate_docbr import CNPJ
 
